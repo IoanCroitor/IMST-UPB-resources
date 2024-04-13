@@ -1,18 +1,17 @@
 #include <cmath>
 #include <vector>
-#include <iostream>
+#include <emscripten/bind.h>
 
+using namespace emscripten;
 
 // Define a struct to hold the output values
 struct MechanismResults {
     double phi1_deg, phi2_deg_1, phi2_deg_2, phi3, omega2, omega3, epsilon2, epsilon3, phi4;
 };
-
 extern "C" {
 // Function that calculates mechanism positions, velocities, and accelerations
-int calculateMechanism(double k) {
+MechanismResults calculateMechanism(double k) {
     MechanismResults results;
-    k=2;
     double l1 = 0.029;
     double l2 = 0.104;
     double l3 = 0.078;
@@ -85,7 +84,22 @@ int calculateMechanism(double k) {
     double sin_phi4 = (yF - yE - l3s * sin_phi3) / l4;
     double phi4_rad = asin(sin_phi4);
     results.phi4 = phi4_rad * 180 / M_PI;
-    return results.phi4;
+    return results;
 }
+}
+// Binding code
+EMSCRIPTEN_BINDINGS(my_module) {
+    class_<MechanismResults>("MechanismResults")
+        .constructor<>()
+        .property("phi1_deg", &MechanismResults::phi1_deg)
+        .property("phi2_deg_1", &MechanismResults::phi2_deg_1)
+        .property("phi2_deg_2", &MechanismResults::phi2_deg_2)
+        .property("phi3", &MechanismResults::phi3)
+        .property("omega2", &MechanismResults::omega2)
+        .property("omega3", &MechanismResults::omega3)
+        .property("epsilon2", &MechanismResults::epsilon2)
+        .property("epsilon3", &MechanismResults::epsilon3)
+        .property("phi4", &MechanismResults::phi4);
 
+    function("calculateMechanism", &calculateMechanism, allow_raw_pointers());
 }

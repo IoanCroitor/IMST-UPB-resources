@@ -3,5 +3,15 @@
 @tailwind utilities;
 
 body {
-	background-color: #1e212b;
+	background-color: #060618;
+}
+
+@layer base {
+	input[type='number']::-webkit-outer-spin-button,
+	input[type='number']::-webkit-inner-spin-button,
+	input[type='number'] {
+		-webkit-appearance: none;
+		margin: 0;
+		-moz-appearance: textfield !important;
+	}
 }

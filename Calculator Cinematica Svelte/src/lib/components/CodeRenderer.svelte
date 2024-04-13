@@ -3,7 +3,7 @@
   import cpp from "svelte-highlight/languages/cpp";
 	import { tokyoNightDark } from "svelte-highlight/styles";
   
-  export let code="";
+  export let code=" int hello_world(){return0;}; ";
 </script>
 
 

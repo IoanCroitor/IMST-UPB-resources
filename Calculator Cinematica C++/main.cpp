@@ -96,9 +96,6 @@ int main() {
     std::cout << "epsilon2: " << epsilon2 << std::endl;
     std::cout << "epsilon3: " << epsilon3 << std::endl;
 
-    
-
-    
     double sin_phi4 = (yF - yE - l3s * sin_phi3) / l4;
     double phi4_rad = asin(sin_phi4);
     double phi4 = phi4_rad * 180 / M_PI;

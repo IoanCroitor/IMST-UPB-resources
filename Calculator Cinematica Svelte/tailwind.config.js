@@ -4,12 +4,13 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				primary: '#DCCFEC',
-				secondary: '#DDC4DD',
-				tertiary: '#A997DF',
-				background: '#1E212B',
-				accent: '#FAA916',
-				foreground: '#1A1B26'
+				text: '#dcdbf5',
+				utext: '#cfcffe',
+				background: '#060618',
+				primary: '#9699e4',
+				secondary: '#7a2183',
+				accent: '#cf44a3',
+				terminal: '#1A1B26'
 			}
 		}
 	},
