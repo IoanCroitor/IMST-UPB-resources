@@ -3,11 +3,10 @@
 import CodeService from '$lib/components/CodeService.svelte';
 import { loadGithubCode } from './loadGithubCode';
 
-const codeWASM =loadGithubCode("https://raw.githubusercontent.com/IoanCroitor/IMST-UPB-resources/main/Calculator%20Cinematica%20C%2B%2B/main.cpp");
-const codeCPP =loadGithubCode("");
+const codeCPP =loadGithubCode("https://raw.githubusercontent.com/IoanCroitor/IMST-UPB-resources/main/Calculator%20Cinematica%20C%2B%2B/main.cpp");
+const codeWASM =loadGithubCode("https://raw.githubusercontent.com/IoanCroitor/IMST-UPB-resources/main/Calculator%20Cinematica%20C%2B%2B/mainWASM.cpp");
 const codeCppPreview= "https://github.com/IoanCroitor/IMST-UPB-resources/blob/main/Calculator%20Cinematica%20C%2B%2B/main.cpp";
-//TODO: Change the code
-const codeWASMPreview="https://github.com/IoanCroitor/IMST-UPB-resources/blob/main/Calculator%20Cinematica%20WASM/main.wasm";
+const codeWASMPreview="https://github.com/IoanCroitor/IMST-UPB-resources/blob/main/Calculator%20Cinematica%20C%2B%2B/mainWASM.cpp";
 let githubLink:string= codeCppPreview;
 
 
@@ -33,7 +32,7 @@ function handleClickBTN2() {
 </script>
 
 
-<div class="rounded-xl overflow-hidden bg-black/20 backdrop-blur-lg will-change-contents">
+<div class="rounded-xl overflow-hidden bg-terminal/40 backdrop-blur-lg will-change-contents">
   <div class="flex flex-row h-9  my-2 px-4">
     <div class="bg-slate-800 rounded-xl overflow-hidden flex items-center">
       <button on:click={handleClickBTN1} class={`bg-primary h-full flex items-center px-2 font-semibold ${styleBTN1}`}>C++</button>
