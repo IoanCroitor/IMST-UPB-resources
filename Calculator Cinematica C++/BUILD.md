@@ -6,7 +6,7 @@ To build the provided C++ project into WebAssembly using Emscripten, follow thes
 
    ```bash
 
-   emcc --bind -O3 mainWASM.cpp -s MODULARIZE=1 -s EXPORT_ES6=1 -o mainWASM.js
+   emcc -O3 --bind mainWASM.cpp -s MODULARIZE=1 -s EXPORT_ES6=1 -o mainWASM.js
 
    ```
 

@@ -1,7 +1,13 @@
 <script lang="ts">
+  import type { MechanismResults, MechanismValue } from "./types";
+  ////////////////////////////////////////////////////////
+  // TEMPORARY UNTIL VITE FIXES ES6 EMSCRIPTEN EXPORTS //
+  ///////////////////////////////////////////////////////
+  // TODO: Refactor to use wasm module
+  //import { calculateMechanism } from "./CalculatorWASM";
+  import { calculateMechanism } from "./CalculatorTypescript";
+
   import { onMount } from "svelte";
-  import { calculateMechanism } from "./CalculatorWASM";
-	import type { MechanismResults, MechanismValue } from "./types";
 
   export let k: number = 5;
   export let showMechanismResults: boolean = true;
