@@ -1,12 +1,18 @@
 # IMST-UPB-resources
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4f76cc23-aa01-4d81-be7e-77d7257f6311/deploy-status)](https://app.netlify.com/sites/imst-cinematica/deploys)
+![Static Badge](https://img.shields.io/badge/Built%20with-_Svelte-FF3E00?style=flat&logo=Svelte)
+![Static Badge](https://img.shields.io/badge/Styled%20with-_Tailwind-06B6D4?style=flat&logo=Tailwind%20CSS)
+![Static Badge](https://img.shields.io/badge/-_C%2B%2B-00599C?style=flat&logo=C%2B%2B)
+![Static Badge](https://img.shields.io/badge/Maintained-_YES-A100FF?style=flat)
 
-[](https://app.netlify.com/sites/imst-cinematica/deploys)
+
+
 
 A collection of useful programs used for my master's degree at the University Politehnica of Bucharest (UPB), focusing on cinematic calculators and other tools relevant to my studies. This monorepo contains the source code for both the calculators and the website hosting these interactive tools.
 
 ## Website
 
-The interactive calculator can be accessed through the website: [IMST Cinematica]([https://imst-cinematica.netlify.app](https://imst-cinematica.netlify.app)
+The interactive calculator can be accessed through the website: [IMST cinematica](https://imst-cinematica.netlify.app)
 
 ## Roadmap
 
