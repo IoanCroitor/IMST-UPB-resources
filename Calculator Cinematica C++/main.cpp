@@ -99,8 +99,23 @@ int main() {
     double sin_phi4 = (yF - yE - l3s * sin_phi3) / l4;
     double phi4_rad = asin(sin_phi4);
     double phi4 = phi4_rad * 180 / M_PI;
+    double cos_phi4 = cos(phi4_rad);
 
     std::cout << "Phi4: " << phi4 << " grade" << std::endl;
 
+    double omega4 = - (omega3 * l3s * cos_phi3) / (l4 * cos_phi4);
+
+    std::cout << "omega4: " << omega4 << std::endl; 
+
+    double VF = - omega3 * l3s * sin_phi3 - omega4 * l4 * sin_phi4;
+    std::cout << "VF: " << VF << std::endl;
+
+    double epsilon4 = - (epsilon3 * l3s * cos_phi3) + (pow(omega3 , 2) * l3s * sin_phi3) + (pow(omega4, 2) * l4 * sin_phi3) / (l4 * cos_phi4);
+    std::cout<< "epsilon4: " << epsilon4 << std::endl;
+
+    double AF = - epsilon3 * l3s * sin_phi3 - pow(omega3, 2) * l3s * cos_phi3 - epsilon4 * l4 * sin_phi4 - pow(omega4, 2) * l4 * cos_phi4;
+    std::cout<< "AF: " << AF << std::endl;
+
+    
     return 0;
 }

@@ -76,8 +76,27 @@ export async function calculateMechanism(k: number): Promise<MechanismResults> {
 	const delta2e = D1 * B2 - D2 * B1;
 	const delta3e = A1 * D2 - A2 * D1;
 
+	const epsilon2 = delta2e / delta1;
+	const epsilon3 = delta3e / delta1;
+
 	const sin_phi4 = (yF - yE - l3s * Math.sin(phi3_rad_corrected)) / l4;
 	const phi4_rad = Math.asin(sin_phi4);
+	const cos_phi4 = Math.cos(phi4_rad);
+
+	const omega4 = -(omega3 * l3s * cos_phi3) / (l4 * cos_phi4);
+
+	const VF = -omega3 * l3s * sin_phi3 - omega4 * l4 * sin_phi4;
+
+	const epsilon4 =
+		-(epsilon3 * l3s * cos_phi3) +
+		Math.pow(omega3, 2) * l3s * sin_phi3 +
+		(Math.pow(omega4, 2) * l4 * sin_phi3) / (l4 * cos_phi4);
+
+	const AF =
+		-epsilon3 * l3s * sin_phi3 -
+		Math.pow(omega3, 2) * l3s * cos_phi3 -
+		epsilon4 * l4 * sin_phi4 -
+		Math.pow(omega4, 2) * l4 * cos_phi4;
 
 	return {
 		phi1_deg,
@@ -86,8 +105,25 @@ export async function calculateMechanism(k: number): Promise<MechanismResults> {
 		phi3: (phi3_rad_corrected * 180) / Math.PI,
 		omega2,
 		omega3,
-		epsilon2: delta2e / delta1,
-		epsilon3: delta3e / delta1,
-		phi4: (phi4_rad * 180) / Math.PI
+		epsilon2,
+		epsilon3,
+		phi4: (phi4_rad * 180) / Math.PI,
+		omega4,
+		VF,
+		epsilon4,
+		AF
 	};
 }
+
+// double omega4 = - (omega3 * l3s * cos_phi3) / (l4 * cos_phi4);
+
+// std::cout << "omega4: " << omega4 << std::endl;
+
+// double VF = - omega3 * l3s * sin_phi3 - omega4 * l4 * sin_phi4;
+// std::cout << "VF: " << VF << std::endl;
+
+// double epsilon4 = - (epsilon3 * l3s * cos_phi3) + (pow(epsilon3 , 2) * l3s * sin_phi3) + (pow(epsilon4, 2) * l4 * sin_phi3) / (l4 * cos_phi4);
+// std::cout<< "epsilon4: " << epsilon4 << std::endl;
+
+// double AF = - epsilon3 * l3s * sin_phi3 - pow(omega3, 2) * l3s * cos_phi3 - epsilon4 * l4 * sin_phi4 - pow(omega4, 2) * l4 * cos_phi4;
+// std::cout<< "AF: " << AF << std::endl;

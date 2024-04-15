@@ -17,3 +17,11 @@ To build the provided C++ project into WebAssembly using Emscripten, follow thes
    - `-s EXPORT_ES6=1`: Generates ES6 JavaScript code, enabling the use of modern JavaScript features and import/export statements.
    - `-o mainWASM.js`: Specifies the output file name. This command generates `mainWASM.js` and `mainWASM.wasm`. The `.js` file acts as a loader for the `.wasm` binary.
 ```
+
+**To complile the barebones main program**
+You need to have gcc installed and added to PATH!
+After that just run
+
+```bash
+g++ main.cpp -o main.exe
+```

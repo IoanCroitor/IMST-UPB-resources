@@ -8,6 +8,10 @@ export interface MechanismResults {
 	epsilon2: number;
 	epsilon3: number;
 	phi4: number;
+	omega4: number;
+	VF: number;
+	epsilon4: number;
+	AF: number;
 }
 
 export type MechanismValue = number | string;

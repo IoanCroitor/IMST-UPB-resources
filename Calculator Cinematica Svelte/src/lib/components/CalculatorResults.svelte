@@ -23,7 +23,10 @@
   let epsilon2: MechanismValue = 0;
   let epsilon3: MechanismValue = 0;
   let phi4: MechanismValue = 0;
-  
+  let omega4: MechanismValue = 0;
+  let VF: MechanismValue = 0;
+  let epsilon4: MechanismValue = 0;
+  let AF: MechanismValue = 0;
 
   let mechanism: Promise<MechanismResults> | MechanismResults;
 
@@ -38,6 +41,10 @@
     epsilon2 = mechanism.epsilon2.toPrecision(precision);
     epsilon3 = mechanism.epsilon3.toPrecision(precision);
     phi4 = mechanism.phi4.toPrecision(precision);
+    omega4 = mechanism.omega4.toPrecision(precision);
+    VF = mechanism.VF.toPrecision(precision);
+    epsilon4 = mechanism.epsilon4.toPrecision(precision);
+    AF = mechanism.AF.toPrecision(precision);
   }
 
   onMount(async() => {
@@ -74,21 +81,35 @@ $:  setMechanismResults(k, precision);
     <span class="text-purple-200 ">Phi 3: </span><span class="text-white">{phi3}</span><span class="text-purple-200 ">°</span>
   </p>
   <p>
-    <span class="text-purple-200 ">Omega2: </span><span class="text-white">{omega2}</span><span class="text-purple-200 "> rad/s</span>
+    <span class="text-purple-200 ">Omega2: </span><span class="text-white">{omega2} </span><span class="text-purple-200 ">rad/s</span>
   </p>
   <p>
-    <span class="text-purple-200 ">Omega3: </span><span class="text-white">{omega3}</span><span class="text-purple-200 "> rad/s</span>
+    <span class="text-purple-200 ">Omega3: </span><span class="text-white">{omega3} </span><span class="text-purple-200 ">rad/s</span>
   </p>
   <p class="pt-4">
-    <span class="text-orange-200 ">Epsilon2: </span><span class="text-white">{epsilon2}</span><span class="text-orange-200 "> rad/s</span>
+    <span class="text-orange-200 ">Epsilon2: </span><span class="text-white">{epsilon2} </span><span class="text-orange-200 ">rad/s²</span>
   </p>
   <p>
-    <span class="text-orange-200 ">Epsilon3: </span><span class="text-white">{epsilon3}</span><span class="text-orange-200 "> rad/s</span>
+    <span class="text-orange-200 ">Epsilon3: </span><span class="text-white">{epsilon3} </span><span class="text-orange-200 ">rad/s²</span>
   </p>
   <p class="pt-4">
-    <span class="text-green-200 ">Phi 4: </span><span class="text-white">{phi4}</span><span class="text-green-200 ">°</span>
+    <span class="text-green-200 ">Phi 4: </span><span class="text-white">{phi4} </span><span class="text-green-200 ">°</span>
   </p>
-  
+  <p class="pt-4">
+    <span class="text-red-400 text-bold">Untested results:</span>
+  </p>
+  <p>
+    <span class="text-red-200 ">Omega 4: </span><span class="text-red-100">{omega4} </span><span class="text-red-200 ">rad/s</span>
+  </p>
+  <p>
+    <span class="text-red-200 ">Viteza liniara VF: </span><span class="text-red-100">{VF} </span><span class="text-red-200 ">m/s</span>
+  </p>
+  <p>
+    <span class="text-red-200 ">Epsilon4: </span><span class="text-red-100">{epsilon4} </span><span class="text-red-200 ">rad/s²</span>
+  </p>
+  <p>
+    <span class="text-red-200 ">Acceleratia liniara AF: </span><span class="text-red-100">{AF} </span><span class="text-red-200 ">m/s²</span>
+  </p>
 </div>
 
 {/if}

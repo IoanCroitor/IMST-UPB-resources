@@ -5,7 +5,7 @@
 
 // Define a struct to hold the output values
 struct MechanismResults {
-    double phi1_deg, phi2_deg_1, phi2_deg_2, phi3, omega2, omega3, epsilon2, epsilon3, phi4;
+    double phi1_deg, phi2_deg_1, phi2_deg_2, phi3, omega2, omega3, epsilon2, epsilon3, phi4, omega4, VF, epsilon4, AF;
 };
 
 extern "C" {
@@ -79,12 +79,28 @@ int calculateMechanism(double k) {
     double delta2e = (D1 * B2 - D2 * B1);
     double delta3e = (A1 * D2 - A2 * D1);
 
-    results.epsilon2 = delta2e / delta1;
-    results.epsilon3 = delta3e / delta1;
+    double epsilon2 = delta2e / delta1;
+    double epsilon3 = delta3e / delta1;
+    results.epsilon2 = epsilon2;
+    results.epsilon3 = epsilon3;
 
     double sin_phi4 = (yF - yE - l3s * sin_phi3) / l4;
     double phi4_rad = asin(sin_phi4);
+    double cos_phi4 = cos(phi4_rad);
     results.phi4 = phi4_rad * 180 / M_PI;
+
+    double omega4 = - (omega3 * l3s * cos_phi3) / (l4 * cos_phi4);
+    results.omega4 = omega4;
+
+    double VF = - omega3 * l3s * sin_phi3 - omega4 * l4 * sin_phi4;
+    results.VF = VF;
+
+    double epsilon4 = - (epsilon3 * l3s * cos_phi3) + (pow(omega3 , 2) * l3s * sin_phi3) + (pow(omega4, 2) * l4 * sin_phi3) / (l4 * cos_phi4);
+    reults.epsilon4 = epsilon4;
+
+    double AF = - epsilon3 * l3s * sin_phi3 - pow(omega3, 2) * l3s * cos_phi3 - epsilon4 * l4 * sin_phi4 - pow(omega4, 2) * l4 * cos_phi4;
+    results.AF = AF;
+
     return results.phi4;
 }
 

@@ -83,7 +83,22 @@ MechanismResults calculateMechanism(double k) {
 
     double sin_phi4 = (yF - yE - l3s * sin_phi3) / l4;
     double phi4_rad = asin(sin_phi4);
+    double cos_phi4 = cos(phi4_rad);
     results.phi4 = phi4_rad * 180 / M_PI;
+
+    double omega4 = - (omega3 * l3s * cos_phi3) / (l4 * cos_phi4);
+    results.omega4 = omega4;
+
+    double VF = - omega3 * l3s * sin_phi3 - omega4 * l4 * sin_phi4;
+    results.VF = VF;
+
+    double epsilon4 = - (epsilon3 * l3s * cos_phi3) + (pow(epsilon3 , 2) * l3s * sin_phi3) + (pow(epsilon4, 2) * l4 * sin_phi3) / (l4 * cos_phi4);
+    reults.epsilon4 = epsilon4;
+
+    double AF = - epsilon3 * l3s * sin_phi3 - pow(omega3, 2) * l3s * cos_phi3 - epsilon4 * l4 * sin_phi4 - pow(omega4, 2) * l4 * cos_phi4;
+    results.AF = AF;
+
+    return results.phi4;
     return results;
 }
 }
@@ -100,6 +115,10 @@ EMSCRIPTEN_BINDINGS(my_module) {
         .property("epsilon2", &MechanismResults::epsilon2)
         .property("epsilon3", &MechanismResults::epsilon3)
         .property("phi4", &MechanismResults::phi4);
+        .property("omega4", &MechanismResults::omega4)
+        .property("VF", &MechanismResults::VF)
+        .property("epsilon4", &MechanismResults::epsilon4);
+        .property("AF", &MechanismResults::AF)
 
     function("calculateMechanism", &calculateMechanism, allow_raw_pointers());
 }
