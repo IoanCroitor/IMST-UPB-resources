@@ -11,8 +11,9 @@
 
   export let k: number = 5;
   export let showMechanismResults: boolean = true;
-  export let precision = 5;
+  export let precision = 7;
 
+  // Mechanism results FOR THE WASM buid because it doen't like getting data diectly from an exported object
   let phi1_deg: MechanismValue = 0;
   let phi2_deg_1: MechanismValue = 0;
   let phi2_deg_2: MechanismValue = 0;
@@ -66,7 +67,7 @@ $:  setMechanismResults(k, precision);
     <span class="text-blue-200 ">Phi 2.1: </span><span class="text-white">{phi2_deg_1}</span><span class="text-blue-200 ">°</span>
   </p>
   <p>
-    <span class="text-blue-200 ">Phi 2.2: </span><span class="text-white">{phi2_deg_1}</span><span class="text-blue-200 ">°</span>
+    <span class="text-gray-200">Phi 2.2: </span><span class="text-gray-200">{phi2_deg_2}</span><span class="text-gray-200 ">°</span>
   </p>
   
   <p class="pt-4">

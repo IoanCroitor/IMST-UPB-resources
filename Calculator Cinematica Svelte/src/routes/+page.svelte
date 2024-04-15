@@ -5,7 +5,7 @@
 
 	// let showMechanismResults:boolean = false;
 	let k:number =0 ;
-	let precision: number = 5;
+	let precision: number = 6;
 
 </script>
 
