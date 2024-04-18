@@ -112,14 +112,11 @@ $:  setMechanismResults(k, precision);
   <p>
     <span class="text-sky-200 ">Viteza liniara VF: </span><span class="text-sky-100">{VF} </span><span class="text-sky-200 ">m/s</span>
   </p>
-  <p class="pt-4">
-    <span class="text-red-400 text-bold">Untested results:</span>
+  <p>
+    <span class="text-pink-200 ">Epsilon4: </span><span class="text-pink-100">{epsilon4} </span><span class="text-pink-200 ">rad/s²</span>
   </p>
   <p>
-    <span class="text-red-200 ">Epsilon4: </span><span class="text-red-100">{epsilon4} </span><span class="text-red-200 ">rad/s²</span>
-  </p>
-  <p>
-    <span class="text-red-200 ">Acceleratia liniara AF: </span><span class="text-red-100">{AF} </span><span class="text-red-200 ">m/s²</span>
+    <span class="text-pink-200 ">Acceleratia liniara AF: </span><span class="text-pink-100">{AF} </span><span class="text-pink-200 ">m/s²</span>
   </p>
 </div>
 
