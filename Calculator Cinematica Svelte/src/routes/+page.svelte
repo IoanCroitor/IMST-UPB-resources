@@ -2,6 +2,7 @@
 
 	import CalculatorResults from "$lib/components/CalculatorResults.svelte";
 	import CodeWrapper from "$lib/components/CodeWrapper.svelte";
+	import MathRender from "$lib/components/MathRender.svelte";
 
 	// let showMechanismResults:boolean = false;
 	let k:number =0 ;
@@ -34,15 +35,9 @@
 	<CalculatorResults {k} {precision}/>
 </div>
 
-
-
-<!-- <div class="flex flex-row pt-12">
-
-	<div class="w-40 h-40 bg-primary"></div>
-	<div class="w-40 h-40 bg-secondary"></div>
-
-	<div class="w-40 h-40 bg-accent"></div>
-	
+<!-- <h2>The math behind the results:</h2>
+<div class="rounded-xl overflow-hidden will-change-contents ">
+	<MathRender/>
 </div> -->
 <div class="my-6">
 	<h2 class="text-text text-lg py-1">Codul sursa ce sta la baza calculatorului</h2>

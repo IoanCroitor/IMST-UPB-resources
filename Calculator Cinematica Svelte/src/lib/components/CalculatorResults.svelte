@@ -27,6 +27,8 @@
   let VF: MechanismValue = 0;
   let epsilon4: MechanismValue = 0;
   let AF: MechanismValue = 0;
+  let xF: MechanismValue = 0;
+  let yF2: MechanismValue = 0;
 
   let mechanism: Promise<MechanismResults> | MechanismResults;
 
@@ -45,6 +47,8 @@
     VF = mechanism.VF.toPrecision(precision);
     epsilon4 = mechanism.epsilon4.toPrecision(precision);
     AF = mechanism.AF.toPrecision(precision);
+    xF = mechanism.xF.toPrecision(precision);
+    yF2 = mechanism.yF2.toPrecision(precision);
   }
 
   onMount(async() => {
@@ -93,16 +97,23 @@ $:  setMechanismResults(k, precision);
     <span class="text-orange-200 ">Epsilon3: </span><span class="text-white">{epsilon3} </span><span class="text-orange-200 ">rad/s²</span>
   </p>
   <p class="pt-4">
-    <span class="text-green-200 ">Phi 4: </span><span class="text-white">{phi4} </span><span class="text-green-200 ">°</span>
+    <span class="text-green-200 ">Phi 4: </span><span class="text-white">{phi4}</span><span class="text-green-200 ">°</span>
+  </p>
+
+  <p>
+    <span class="text-sky-200 ">xF: </span><span class="text-sky-100">{xF} </span>
+  </p>
+  <p>
+    <span class="text-sky-200 ">yF: </span><span class="text-sky-100">{yF2} </span>
+  </p>
+  <p>
+    <span class="text-sky-200 ">Omega 4: </span><span class="text-sky-100">{omega4} </span><span class="text-sky-200 ">rad/s</span>
+  </p>
+  <p>
+    <span class="text-sky-200 ">Viteza liniara VF: </span><span class="text-sky-100">{VF} </span><span class="text-sky-200 ">m/s</span>
   </p>
   <p class="pt-4">
     <span class="text-red-400 text-bold">Untested results:</span>
-  </p>
-  <p>
-    <span class="text-red-200 ">Omega 4: </span><span class="text-red-100">{omega4} </span><span class="text-red-200 ">rad/s</span>
-  </p>
-  <p>
-    <span class="text-red-200 ">Viteza liniara VF: </span><span class="text-red-100">{VF} </span><span class="text-red-200 ">m/s</span>
   </p>
   <p>
     <span class="text-red-200 ">Epsilon4: </span><span class="text-red-100">{epsilon4} </span><span class="text-red-200 ">rad/s²</span>
