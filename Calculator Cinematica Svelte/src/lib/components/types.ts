@@ -13,7 +13,6 @@ export interface MechanismResults {
 	epsilon4: number;
 	AF: number;
 	xF: number;
-	yF2: number;
 }
 
 export type MechanismValue = number | string;

@@ -6,7 +6,7 @@ using namespace emscripten;
 
 // Define a struct to hold the output values
 struct MechanismResults {
-    double phi1_deg, phi2_deg_1, phi2_deg_2, phi3, omega2, omega3, epsilon2, epsilon3, phi4;
+    double phi1_deg, phi2_deg_1, phi2_deg_2, phi3, omega2, omega3, epsilon2, epsilon3, phi4, omega4, xF, VF, epsilon4, AF;
 };
 extern "C" {
 // Function that calculates mechanism positions, velocities, and accelerations
@@ -89,10 +89,13 @@ MechanismResults calculateMechanism(double k) {
     double omega4 = - (omega3 * l3s * cos_phi3) / (l4 * cos_phi4);
     results.omega4 = omega4;
 
+    double xF = xE + l3s * cos_phi3 + l4 * cos_phi4;
+    results.xF = xF;
+
     double VF = - omega3 * l3s * sin_phi3 - omega4 * l4 * sin_phi4;
     results.VF = VF;
 
-    double epsilon4 = - (epsilon3 * l3s * cos_phi3) + (pow(epsilon3 , 2) * l3s * sin_phi3) + (pow(epsilon4, 2) * l4 * sin_phi3) / (l4 * cos_phi4);
+    double epsilon4 = - (epsilon3 * l3s * cos_phi3) + (pow(epsilon3 , 2) * l3s * sin_phi3) + (pow(epsilon4, 2) * l4 * sin_phi4) / (l4 * cos_phi4);
     reults.epsilon4 = epsilon4;
 
     double AF = - epsilon3 * l3s * sin_phi3 - pow(omega3, 2) * l3s * cos_phi3 - epsilon4 * l4 * sin_phi4 - pow(omega4, 2) * l4 * cos_phi4;
@@ -118,7 +121,8 @@ EMSCRIPTEN_BINDINGS(my_module) {
         .property("omega4", &MechanismResults::omega4)
         .property("VF", &MechanismResults::VF)
         .property("epsilon4", &MechanismResults::epsilon4);
-        .property("AF", &MechanismResults::AF)
+        .property("AF", &MechanismResults::AF);
+        .property("xF", &MechanismResults::xF);
 
     function("calculateMechanism", &calculateMechanism, allow_raw_pointers());
 }

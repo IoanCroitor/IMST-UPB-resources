@@ -28,7 +28,6 @@
   let epsilon4: MechanismValue = 0;
   let AF: MechanismValue = 0;
   let xF: MechanismValue = 0;
-  let yF2: MechanismValue = 0;
 
   let mechanism: Promise<MechanismResults> | MechanismResults;
 
@@ -48,7 +47,6 @@
     epsilon4 = mechanism.epsilon4.toPrecision(precision);
     AF = mechanism.AF.toPrecision(precision);
     xF = mechanism.xF.toPrecision(precision);
-    yF2 = mechanism.yF2.toPrecision(precision);
   }
 
   onMount(async() => {
@@ -102,9 +100,6 @@ $:  setMechanismResults(k, precision);
 
   <p>
     <span class="text-sky-200 ">xF: </span><span class="text-sky-100">{xF} </span>
-  </p>
-  <p>
-    <span class="text-sky-200 ">yF: </span><span class="text-sky-100">{yF2} </span>
   </p>
   <p>
     <span class="text-sky-200 ">Omega 4: </span><span class="text-sky-100">{omega4} </span><span class="text-sky-200 ">rad/s</span>

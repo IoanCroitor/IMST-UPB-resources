@@ -84,9 +84,8 @@ export async function calculateMechanism(k: number): Promise<MechanismResults> {
 	const cos_phi4 = Math.cos(phi4_rad);
 
 	const omega4 = -(omega3 * l3s * cos_phi3) / (l4 * cos_phi4);
-	// yF changes from 0 to this:
+
 	const xF = xE + l3s * cos_phi3 + l4 * cos_phi4;
-	const yF2 = yE + l3s * sin_phi3 + l4 * sin_phi4;
 
 	const VF = -omega3 * l3s * sin_phi3 - omega4 * l4 * sin_phi4;
 
@@ -116,7 +115,6 @@ export async function calculateMechanism(k: number): Promise<MechanismResults> {
 		VF,
 		epsilon4,
 		AF,
-		xF,
-		yF2
+		xF
 	};
 }

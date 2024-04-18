@@ -56,9 +56,9 @@ int main() {
         std::cout << std::endl << "Phi3 se afla in cadranul 1" << std::endl;
     }
 
-    //Corectat phi3 in degrees
+    //Corectat phi3 in grade
     double phi3 = phi3_rad_corrected * 180 / M_PI;
-    // Corectat phi3 in radians
+    // Corectat phi3 in radiani
     phi3_rad = phi3_rad_corrected;
 
     std::cout << "Pentru k=" << k << ":" << std::endl;
@@ -105,17 +105,19 @@ int main() {
 
     double omega4 = - (omega3 * l3s * cos_phi3) / (l4 * cos_phi4);
 
+    double xF = xE + l3s * cos_phi3 + l4 * cos_phi4;
+
+    std::cout<< "xF: " << xF << std::endl;
+
     std::cout << "omega4: " << omega4 << std::endl; 
 
     double VF = - omega3 * l3s * sin_phi3 - omega4 * l4 * sin_phi4;
     std::cout << "VF: " << VF << std::endl;
 
-    double epsilon4 = - (epsilon3 * l3s * cos_phi3) + (pow(omega3 , 2) * l3s * sin_phi3) + (pow(omega4, 2) * l4 * sin_phi3) / (l4 * cos_phi4);
+    double epsilon4 = - (epsilon3 * l3s * cos_phi3) + (pow(omega3 , 2) * l3s * sin_phi3) + (pow(omega4, 2) * l4 * sin_phi4) / (l4 * cos_phi4);
     std::cout<< "epsilon4: " << epsilon4 << std::endl;
 
     double AF = - epsilon3 * l3s * sin_phi3 - pow(omega3, 2) * l3s * cos_phi3 - epsilon4 * l4 * sin_phi4 - pow(omega4, 2) * l4 * cos_phi4;
     std::cout<< "AF: " << AF << std::endl;
-
-    
     return 0;
 }
